@@ -1,4 +1,4 @@
-import githubLogo from "./images/github-mark-white.svg";
+import githubLogo from "../assets/github-mark-white.svg";
 
 const footer = () => {
   let footer = document.createElement("footer");

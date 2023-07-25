@@ -1,9 +1,18 @@
 import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 
-import { header } from "./header";
-import footer from "./footer";
+// import { header } from "./header";
+// import footer from "./footer";
+// document.body.appendChild(header());
+// document.body.appendChild(footer());
 
-document.body.appendChild(header());
+import createChessBoardUI from "./chessBoardUI";
+import createControlButtonsUI from "./controlButtonsUI";
 
-document.body.appendChild(footer());
+let contentContainer = document.createElement("div");
+contentContainer.setAttribute("id", "content-container");
+
+contentContainer.appendChild(createControlButtonsUI());
+contentContainer.appendChild(createChessBoardUI());
+
+document.body.appendChild(contentContainer);

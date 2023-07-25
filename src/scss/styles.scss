@@ -1,6 +1,8 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
+$chess-board-size: 50vw;
+
 body {
   margin: 0;
   background-color: #dddddd;
@@ -50,149 +52,44 @@ footer {
   font-size: 0.75rem;
 }
 
-.btn-primary {
-  font-weight: bold;
-}
-
-.sidebar-heading {
-  border-bottom: 2px solid black;
-  margin-left: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.main-container {
+#content-container {
   display: flex;
-  flex: 1;
 }
 
-.sidebar-section {
-  display: flex;
-  width: 30vw;
-  flex-direction: column;
+#chess-board {
+  margin: auto;
+  width: $chess-board-size;
+  height: $chess-board-size;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  box-shadow: 5px 5px 15px #292524;
 }
 
-.sidebar-item {
-  display: flex;
-  gap: 10px;
-  margin: 5px;
+.black-tile {
+  background-color: black;
 }
 
-.btn-group-vertical {
-  width: 95%;
+.white-tile {
+  background-color: rgb(231, 231, 231);
 }
 
-.sidebar-text {
-  flex: 1;
-  text-align: left;
-}
-
-.modal-form {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-form-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-
-  label {
-    font-weight: bold;
-  }
-}
-
-.modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.btns-container {
-  display: flex;
-  gap: 5px;
-  margin: 5px;
-  justify-content: center;
-
-  button {
-    flex: 1;
-  }
-}
-
-.content-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.task-item {
-  display: flex;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-.task-item-text {
-  flex: 1;
-}
-
-.task-due-date {
-  border-radius: 8px;
-  border: 2px solid black;
-  padding: 2px;
-  margin: 2px;
-}
-
-.add-task-button {
-  display: flex;
-  gap: 10px;
+#control-buttons-container {
   margin: 20px;
-}
-
-.options-container {
-  position: relative;
-}
-
-.options {
-  display: none; // when active, set as flex
+  display: flex;
   flex-direction: column;
-  width: 100px;
+  justify-content: center;
   row-gap: 5px;
-  padding: 5px;
-  background-color: #3a3a3a;
 
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  div {
+    display: flex;
+
+    button {
+      flex: 1;
+    }
+  }
 }
 
 @media (max-width: 600px) {
   $content-width: 95vw;
-
-  .main-container {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .sidebar-section {
-    width: $content-width;
-  }
-
-  .content-section {
-    width: $content-width;
-  }
 }

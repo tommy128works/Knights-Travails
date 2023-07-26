@@ -41,7 +41,6 @@ footer {
 
 .medium-font {
   font-size: 1.5rem;
-  margin: 5px;
 }
 
 .small-font {
@@ -64,6 +63,10 @@ footer {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   box-shadow: 5px 5px 15px #292524;
+
+  div {
+    text-align: center;
+  }
 }
 
 .black-tile {
@@ -72,6 +75,10 @@ footer {
 
 .white-tile {
   background-color: rgb(231, 231, 231);
+}
+
+.gray-tile {
+  background-color: grey;
 }
 
 .start-tile {

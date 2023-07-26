@@ -1,5 +1,5 @@
 import PathFinderGraph from "./PathFinderGraph";
-import { addKnightMove } from "./chessBoardUI";
+import { displayKnightMoves } from "./chessBoardUI";
 
 const knightPlaced = (event) => {
   let chessBoard = document.getElementById("chess-board");
@@ -57,6 +57,7 @@ const addPlaceEndButtonEventListeners = () => {
 
 const addStartButtonEventListeners = () => {
   let startButton = document.getElementById("start-button");
+  let pathArray = [];
 
   startButton.addEventListener("click", (event) => {
     if (
@@ -65,10 +66,12 @@ const addStartButtonEventListeners = () => {
       startButton.hasAttribute("data-end-x") &&
       startButton.hasAttribute("data-end-x")
     ) {
-      PathFinderGraph.findPath(
+      pathArray = PathFinderGraph.findPath(
         startButton.dataset.startX + "," + startButton.dataset.startY,
         startButton.dataset.endX + "," + startButton.dataset.endY
       );
+
+      displayKnightMoves(pathArray);
     }
   });
 };

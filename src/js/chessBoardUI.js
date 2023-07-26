@@ -1,8 +1,21 @@
 const CHESS_BOARD_SIZE = 8;
 
-const createArrow = () => {};
+const displayKnightMoves = (pathArray) => {
+  // place numbers and change colours
+  for (let i = 0; i < pathArray.length; i++) {
+    let coordinates = pathArray[i];
+    coordinates = coordinates.split(",");
+    let x = coordinates[0];
+    let y = coordinates[1];
+    let tile = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    tile.textContent = i;
 
-const addKnightMove = () => {};
+    if (i !== 0 || i !== pathArray.length - 1) {
+      tile.classList.add("gray-tile")
+    }
+
+  }
+};
 
 const createChessBoardUI = () => {
   let container = document.createElement("div");
@@ -24,4 +37,4 @@ const createChessBoardUI = () => {
   return container;
 };
 
-export { createChessBoardUI, addKnightMove };
+export { createChessBoardUI, displayKnightMoves };

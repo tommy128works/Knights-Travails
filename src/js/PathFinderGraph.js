@@ -63,9 +63,9 @@ const PathFinderGraph = (() => {
         }
       }
     }
-    console.log(`Fastest Routes from ${start} to ${end}`);
+    // console.log(`Fastest Routes from ${start} to ${end}`);
     // paths.forEach((element) => console.log(element));
-    console.log(paths[0]);
+    return paths[0];
   };
 
   return {

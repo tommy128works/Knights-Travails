@@ -7,7 +7,7 @@ import * as bootstrap from "bootstrap";
 // document.body.appendChild(footer());
 
 import createChessBoardUI from "./chessBoardUI";
-import createControlButtonsUI from "./controlButtonsUI";
+import { createControlButtonsUI, addPlaceKnightButtonEventListeners } from "./controlButtonsUI";
 import PathFinderGraph from "./PathFinderGraph";
 
 let contentContainer = document.createElement("div");
@@ -18,6 +18,6 @@ contentContainer.appendChild(createChessBoardUI());
 
 document.body.appendChild(contentContainer);
 
-// PathFinder.findPath(0, 0, 0, 4);
+addPlaceKnightButtonEventListeners();
 
 PathFinderGraph.findPath("3,1", "2,2");

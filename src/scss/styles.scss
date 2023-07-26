@@ -74,6 +74,14 @@ footer {
   background-color: rgb(231, 231, 231);
 }
 
+.start-tile {
+  background-color: green;
+}
+
+.end-tile {
+  background-color: red;
+}
+
 #control-buttons-container {
   margin: 20px;
   display: flex;

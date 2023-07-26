@@ -1,3 +1,30 @@
+const clickChessBoard = (event) => {
+  let chessBoard = document.getElementById("chess-board");
+  let tiles = chessBoard.childNodes;
+
+  tiles.forEach((child) => {
+    child.classList.remove("start-tile");
+  })
+  event.target.classList.add("start-tile");
+
+  let startButton = document.getElementById("start-button");
+  startButton.dataset.startX = event.target.dataset.x;
+  startButton.dataset.startY = event.target.dataset.y;
+
+  chessBoard.removeEventListener("click", clickChessBoard);
+}
+
+const allowKnightPlacement = (event) => {
+  let chessBoard = document.getElementById("chess-board");
+  chessBoard.addEventListener("click", clickChessBoard);
+
+}
+
+const addPlaceKnightButtonEventListeners = () => {
+  let placeKnight = document.getElementById("place-knight-button");
+  placeKnight.addEventListener("click", allowKnightPlacement)
+};
+
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
   container.setAttribute("id", "control-buttons-container");
@@ -43,4 +70,4 @@ const createControlButtonsUI = () => {
   return container;
 };
 
-export default createControlButtonsUI;
+export { createControlButtonsUI, addPlaceKnightButtonEventListeners };

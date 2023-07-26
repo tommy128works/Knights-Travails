@@ -8,7 +8,7 @@ import * as bootstrap from "bootstrap";
 
 import createChessBoardUI from "./chessBoardUI";
 import createControlButtonsUI from "./controlButtonsUI";
-import PathFinder from "./PathFinder";
+import PathFinderGraph from "./PathFinderGraph";
 
 let contentContainer = document.createElement("div");
 contentContainer.setAttribute("id", "content-container");
@@ -18,4 +18,5 @@ contentContainer.appendChild(createChessBoardUI());
 
 document.body.appendChild(contentContainer);
 
-PathFinder.findPath(0, 0, 0, 4);
+// PathFinder.findPath(0, 0, 0, 4);
+// PathFinder.findPathRefactored(0, 0, 0, 4);

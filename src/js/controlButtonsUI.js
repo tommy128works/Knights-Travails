@@ -1,29 +1,57 @@
-const clickChessBoard = (event) => {
+const knightPlaced = (event) => {
   let chessBoard = document.getElementById("chess-board");
   let tiles = chessBoard.childNodes;
 
   tiles.forEach((child) => {
     child.classList.remove("start-tile");
-  })
+  });
   event.target.classList.add("start-tile");
 
   let startButton = document.getElementById("start-button");
   startButton.dataset.startX = event.target.dataset.x;
   startButton.dataset.startY = event.target.dataset.y;
 
-  chessBoard.removeEventListener("click", clickChessBoard);
-}
+  chessBoard.removeEventListener("click", knightPlaced);
+};
 
 const allowKnightPlacement = (event) => {
   let chessBoard = document.getElementById("chess-board");
-  chessBoard.addEventListener("click", clickChessBoard);
-
-}
+  chessBoard.addEventListener("click", knightPlaced);
+  chessBoard.removeEventListener("click", endPlaced);
+};
 
 const addPlaceKnightButtonEventListeners = () => {
   let placeKnight = document.getElementById("place-knight-button");
-  placeKnight.addEventListener("click", allowKnightPlacement)
+  placeKnight.addEventListener("click", allowKnightPlacement);
 };
+
+const endPlaced = (event) => {
+  let chessBoard = document.getElementById("chess-board");
+  let tiles = chessBoard.childNodes;
+
+  tiles.forEach((child) => {
+    child.classList.remove("end-tile");
+  });
+  event.target.classList.add("end-tile");
+
+  let startButton = document.getElementById("start-button");
+  startButton.dataset.endX = event.target.dataset.x;
+  startButton.dataset.endY = event.target.dataset.y;
+
+  chessBoard.removeEventListener("click", endPlaced);
+};
+
+const allowEndPlacement = (event) => {
+  let chessBoard = document.getElementById("chess-board");
+  chessBoard.addEventListener("click", endPlaced);
+  chessBoard.removeEventListener("click", knightPlaced);
+}
+
+const addPlaceEndButtonEventListeners = () => {
+  let placeEnd = document.getElementById("place-end-button");
+  placeEnd.addEventListener("click", allowEndPlacement);
+}
+
 
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
@@ -70,4 +98,8 @@ const createControlButtonsUI = () => {
   return container;
 };
 
-export { createControlButtonsUI, addPlaceKnightButtonEventListeners };
+export {
+  createControlButtonsUI,
+  addPlaceKnightButtonEventListeners,
+  addPlaceEndButtonEventListeners,
+};

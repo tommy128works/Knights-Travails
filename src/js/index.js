@@ -12,6 +12,7 @@ import {
   addPlaceKnightButtonEventListeners,
   addPlaceEndButtonEventListeners,
   addStartButtonEventListeners,
+  addRandomKnightButtonEventListeners,
 } from "./controlButtonsUI";
 
 let contentContainer = document.createElement("div");
@@ -25,5 +26,6 @@ document.body.appendChild(contentContainer);
 addPlaceKnightButtonEventListeners();
 addPlaceEndButtonEventListeners();
 addStartButtonEventListeners();
+addRandomKnightButtonEventListeners();
 
 // PathFinderGraph.findPath("3,1", "2,2");

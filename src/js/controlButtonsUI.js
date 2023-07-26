@@ -1,3 +1,5 @@
+const CHESS_BOARD_SIZE = 8;
+
 import PathFinderGraph from "./PathFinderGraph";
 import { displayKnightMoves } from "./chessBoardUI";
 
@@ -76,6 +78,32 @@ const addStartButtonEventListeners = () => {
   });
 };
 
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
+const addRandomKnightButtonEventListeners = () => {
+  let randomKnight = document.getElementById("random-knight-button");
+
+  randomKnight.addEventListener("click", (event) => {
+    let chessBoard = document.getElementById("chess-board");
+    let tiles = chessBoard.childNodes;
+
+    tiles.forEach((child) => {
+      child.classList.remove("start-tile");
+    });
+
+    let x = getRandomInt(CHESS_BOARD_SIZE);
+    let y = getRandomInt(CHESS_BOARD_SIZE);
+    let tile = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    tile.classList.add("start-tile");
+
+    let startButton = document.getElementById("start-button");
+    startButton.dataset.startX = x;
+    startButton.dataset.startY = y;  
+  });
+};
+
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
   container.setAttribute("id", "control-buttons-container");
@@ -126,4 +154,5 @@ export {
   addPlaceKnightButtonEventListeners,
   addPlaceEndButtonEventListeners,
   addStartButtonEventListeners,
+  addRandomKnightButtonEventListeners,
 };

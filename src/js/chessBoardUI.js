@@ -1,7 +1,6 @@
 const CHESS_BOARD_SIZE = 8;
 
 const displayKnightMoves = (pathArray) => {
-  // place numbers and change colours
   for (let i = 0; i < pathArray.length; i++) {
     let coordinates = pathArray[i];
     coordinates = coordinates.split(",");
@@ -11,9 +10,8 @@ const displayKnightMoves = (pathArray) => {
     tile.textContent = i;
 
     if (i !== 0 || i !== pathArray.length - 1) {
-      tile.classList.add("gray-tile")
+      tile.classList.add("gray-tile");
     }
-
   }
 };
 

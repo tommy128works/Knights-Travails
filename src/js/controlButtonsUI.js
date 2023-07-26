@@ -1,3 +1,6 @@
+import PathFinderGraph from "./PathFinderGraph";
+import { addKnightMove } from "./chessBoardUI";
+
 const knightPlaced = (event) => {
   let chessBoard = document.getElementById("chess-board");
   let tiles = chessBoard.childNodes;
@@ -45,13 +48,30 @@ const allowEndPlacement = (event) => {
   let chessBoard = document.getElementById("chess-board");
   chessBoard.addEventListener("click", endPlaced);
   chessBoard.removeEventListener("click", knightPlaced);
-}
+};
 
 const addPlaceEndButtonEventListeners = () => {
   let placeEnd = document.getElementById("place-end-button");
   placeEnd.addEventListener("click", allowEndPlacement);
-}
+};
 
+const addStartButtonEventListeners = () => {
+  let startButton = document.getElementById("start-button");
+
+  startButton.addEventListener("click", (event) => {
+    if (
+      startButton.hasAttribute("data-start-x") &&
+      startButton.hasAttribute("data-start-y") &&
+      startButton.hasAttribute("data-end-x") &&
+      startButton.hasAttribute("data-end-x")
+    ) {
+      PathFinderGraph.findPath(
+        startButton.dataset.startX + "," + startButton.dataset.startY,
+        startButton.dataset.endX + "," + startButton.dataset.endY
+      );
+    }
+  });
+};
 
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
@@ -102,4 +122,5 @@ export {
   createControlButtonsUI,
   addPlaceKnightButtonEventListeners,
   addPlaceEndButtonEventListeners,
+  addStartButtonEventListeners,
 };

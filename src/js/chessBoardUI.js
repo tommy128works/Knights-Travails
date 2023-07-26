@@ -1,5 +1,9 @@
 const CHESS_BOARD_SIZE = 8;
 
+const createArrow = () => {};
+
+const addKnightMove = () => {};
+
 const createChessBoardUI = () => {
   let container = document.createElement("div");
   container.setAttribute("id", "chess-board");
@@ -20,4 +24,4 @@ const createChessBoardUI = () => {
   return container;
 };
 
-export default createChessBoardUI;
+export { createChessBoardUI, addKnightMove };

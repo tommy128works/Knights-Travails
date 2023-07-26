@@ -6,13 +6,13 @@ import * as bootstrap from "bootstrap";
 // document.body.appendChild(header());
 // document.body.appendChild(footer());
 
-import createChessBoardUI from "./chessBoardUI";
+import { createChessBoardUI } from "./chessBoardUI";
 import {
   createControlButtonsUI,
   addPlaceKnightButtonEventListeners,
-  addPlaceEndButtonEventListeners
+  addPlaceEndButtonEventListeners,
+  addStartButtonEventListeners,
 } from "./controlButtonsUI";
-import PathFinderGraph from "./PathFinderGraph";
 
 let contentContainer = document.createElement("div");
 contentContainer.setAttribute("id", "content-container");
@@ -24,5 +24,6 @@ document.body.appendChild(contentContainer);
 
 addPlaceKnightButtonEventListeners();
 addPlaceEndButtonEventListeners();
+addStartButtonEventListeners();
 
-PathFinderGraph.findPath("3,1", "2,2");
+// PathFinderGraph.findPath("3,1", "2,2");

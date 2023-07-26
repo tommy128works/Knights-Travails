@@ -18,4 +18,4 @@ contentContainer.appendChild(createChessBoardUI());
 
 document.body.appendChild(contentContainer);
 
-PathFinder.findPath(0, 0, 5, 6);
+PathFinder.findPath(0, 0, 0, 4);

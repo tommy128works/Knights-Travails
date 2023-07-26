@@ -1,4 +1,4 @@
-const Node = (value = null, nextNodes = null) => {
+const Node = (value = null, nextNodes = []) => {
   return { value, nextNodes };
 };
 

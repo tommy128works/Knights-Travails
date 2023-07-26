@@ -40,20 +40,71 @@ const PathFinder = (() => {
   };
 
   const findPath = (startX, startY, endX, endY) => {
+    if (startX === endX && startY === endY) {
+      return console.log("Reached end in 0 moves!");
+    }
+
     head = Node([startX, startY]);
     tilesCovered = [[startX, startY]];
     maximumDepth = 0;
+    let isEnd = false;
 
-    
+    let possibleMoves = listPossibleMoves(startX, startY);
+    let validMoves = validateMoves(possibleMoves);
+    for (let i = 0; i < validMoves.length; i++) {
+      head.nextNodes.push(Node(validMoves[i]));
 
-    // console.log(head);
-    console.log(tilesCovered);
+      if (validMoves[i][0] === endX && validMoves[i][1] === endY) {
+        isEnd = true;
+        console.log("Path has been found");
+        break;
+      }
+    }
 
-    let moves = listPossibleMoves(startX, startY);
-    console.log(moves);
+    // iteration 2
+    loop1: for (let i = 0; i < head.nextNodes.length; i++) {
+      possibleMoves = listPossibleMoves(
+        head.nextNodes[i].value[0],
+        head.nextNodes[i].value[1]
+      );
+      validMoves = validateMoves(possibleMoves);
 
-    console.log(validateMoves(moves));
+      for (let j = 0; j < validMoves.length; j++) {
+        head.nextNodes[i].nextNodes.push(Node(validMoves[j]));
+        if (validMoves[j][0] === endX && validMoves[j][1] === endY) {
+          isEnd = true;
+          console.log("Path has been found");
+          break loop1;
+        }
+      }
+    }
 
+    // iteration 3
+    loop1: for (let i = 0; i < head.nextNodes.length; i++) {
+      for (let j = 0; j < head.nextNodes[i].length; j++) {
+        possibleMoves = listPossibleMoves(
+          head.nextNodes[j].value[0],
+          head.nextNodes[j].value[1]
+        );
+        validMoves = validateMoves(possibleMoves);
+  
+        for (let k = 0; k < validMoves.length; k++) {
+          head.nextNodes[i].nextNodes[j].nextNodes.push(Node(validMoves[k]));
+          if (validMoves[k][0] === endX && validMoves[k][1] === endY) {
+            isEnd = true;
+            console.log("Path has been found");
+            break loop1;
+          }
+        }
+      }
+    }
+
+    console.log(head.nextNodes[0]);
+    // (0, 0) > (1, 2) > (0, 4)
+
+    // console.log(head.nextNodes[0].value);
+    // console.log(head.nextNodes[0].nextNodes);
+    console.log(head);
   };
 
   return {

@@ -74,6 +74,16 @@ const addStartButtonEventListeners = () => {
       );
 
       displayKnightMoves(pathArray);
+
+      // let placeKnight = document.getElementById("place-knight-button");
+      // let randomKnight = document.getElementById("random-knight-button");
+      // let placeEnd = document.getElementById("place-end-button");
+      // let randomEnd = document.getElementById("random-end-button");
+      // let buttons = [placeKnight, randomKnight, placeEnd, randomEnd];
+  
+      // buttons.forEach((button) => {
+      //   button.addEventListener("click", resetBoard);
+      // });
     }
   });
 };
@@ -100,13 +110,13 @@ const addRandomKnightButtonEventListeners = () => {
 
     let startButton = document.getElementById("start-button");
     startButton.dataset.startX = x;
-    startButton.dataset.startY = y;  
+    startButton.dataset.startY = y;
   });
 };
 
 const addRandomEndButtonEventListeners = () => {
   let randomEnd = document.getElementById("random-end-button");
-  
+
   randomEnd.addEventListener("click", (event) => {
     let chessBoard = document.getElementById("chess-board");
     let tiles = chessBoard.childNodes;
@@ -122,9 +132,31 @@ const addRandomEndButtonEventListeners = () => {
 
     let startButton = document.getElementById("start-button");
     startButton.dataset.endX = x;
-    startButton.dataset.endY = y;  
+    startButton.dataset.endY = y;
   });
-}
+};
+
+const resetBoard = () => {
+  let startButton = document.getElementById("start-button");
+  startButton.removeAttribute("data-start-x");
+  startButton.removeAttribute("data-start-y");
+  startButton.removeAttribute("data-end-x");
+  startButton.removeAttribute("data-end-y");
+
+  let chessBoard = document.getElementById("chess-board");
+  let tiles = chessBoard.childNodes;
+
+  tiles.forEach((child) => {
+    child.classList.remove("end-tile", "start-tile", "gray-tile");
+    child.textContent = "";
+  });
+};
+
+const addResetButtonEventListeners = () => {
+  let resetButton = document.getElementById("reset-button");
+
+  resetButton.addEventListener("click", resetBoard);
+};
 
 const addControlButtonsEventListeners = () => {
   addPlaceKnightButtonEventListeners();
@@ -132,7 +164,8 @@ const addControlButtonsEventListeners = () => {
   addStartButtonEventListeners();
   addRandomKnightButtonEventListeners();
   addRandomEndButtonEventListeners();
-}
+  addResetButtonEventListeners();
+};
 
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
@@ -179,7 +212,4 @@ const createControlButtonsUI = () => {
   return container;
 };
 
-export {
-  createControlButtonsUI,
-  addControlButtonsEventListeners
-};
+export { createControlButtonsUI, addControlButtonsEventListeners };

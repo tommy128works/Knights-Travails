@@ -9,7 +9,7 @@ import * as bootstrap from "bootstrap";
 import { createChessBoardUI } from "./chessBoardUI";
 import {
   createControlButtonsUI,
-  addControlButtonsEventListeners
+  addControlButtonsEventListeners,
 } from "./controlButtonsUI";
 
 let contentContainer = document.createElement("div");

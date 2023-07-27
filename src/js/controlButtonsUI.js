@@ -75,15 +75,15 @@ const addStartButtonEventListeners = () => {
 
       displayKnightMoves(pathArray);
 
-      // let placeKnight = document.getElementById("place-knight-button");
-      // let randomKnight = document.getElementById("random-knight-button");
-      // let placeEnd = document.getElementById("place-end-button");
-      // let randomEnd = document.getElementById("random-end-button");
-      // let buttons = [placeKnight, randomKnight, placeEnd, randomEnd];
-  
-      // buttons.forEach((button) => {
-      //   button.addEventListener("click", resetBoard);
-      // });
+      let placeKnight = document.getElementById("place-knight-button");
+      let randomKnight = document.getElementById("random-knight-button");
+      let placeEnd = document.getElementById("place-end-button");
+      let randomEnd = document.getElementById("random-end-button");
+      let buttons = [placeKnight, randomKnight, placeEnd, randomEnd];
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", resetBoard);
+      });
     }
   });
 };
@@ -149,6 +149,20 @@ const resetBoard = () => {
   tiles.forEach((child) => {
     child.classList.remove("end-tile", "start-tile", "gray-tile");
     child.textContent = "";
+  });
+
+  removeResetFromControlButtons();
+};
+
+const removeResetFromControlButtons = () => {
+  let placeKnight = document.getElementById("place-knight-button");
+  let randomKnight = document.getElementById("random-knight-button");
+  let placeEnd = document.getElementById("place-end-button");
+  let randomEnd = document.getElementById("random-end-button");
+  let buttons = [placeKnight, randomKnight, placeEnd, randomEnd];
+
+  buttons.forEach((button) => {
+    button.removeEventListener("click", resetBoard);
   });
 };
 

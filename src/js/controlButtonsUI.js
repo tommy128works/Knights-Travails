@@ -3,6 +3,22 @@ const CHESS_BOARD_SIZE = 8;
 import PathFinderGraph from "./PathFinderGraph";
 import { displayKnightMoves } from "./chessBoardUI";
 
+const removePlacementEventListeners = () => {
+  let chessBoard = document.getElementById("chess-board");
+  chessBoard.removeEventListener("click", knightPlaced);
+  chessBoard.removeEventListener("click", endPlaced);
+
+  let randomKnight = document.getElementById("random-knight-button");
+  let randomEnd = document.getElementById("random-end-button");
+  let startButton = document.getElementById("start-button");
+  let resetButton = document.getElementById("reset-button");
+  let buttons = [randomKnight, randomEnd, startButton, resetButton];
+
+  buttons.forEach((button) => {
+    button.removeEventListener("click", removePlacementEventListeners);
+  })
+}
+
 const knightPlaced = (event) => {
   let chessBoard = document.getElementById("chess-board");
   let tiles = chessBoard.childNodes;
@@ -23,6 +39,16 @@ const allowKnightPlacement = (event) => {
   let chessBoard = document.getElementById("chess-board");
   chessBoard.addEventListener("click", knightPlaced);
   chessBoard.removeEventListener("click", endPlaced);
+
+  let randomKnight = document.getElementById("random-knight-button");
+  let randomEnd = document.getElementById("random-end-button");
+  let startButton = document.getElementById("start-button");
+  let resetButton = document.getElementById("reset-button");
+  let buttons = [randomKnight, randomEnd, startButton, resetButton];
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", removePlacementEventListeners);
+  })
 };
 
 const addPlaceKnightButtonEventListeners = () => {
@@ -50,6 +76,16 @@ const allowEndPlacement = (event) => {
   let chessBoard = document.getElementById("chess-board");
   chessBoard.addEventListener("click", endPlaced);
   chessBoard.removeEventListener("click", knightPlaced);
+
+  let randomKnight = document.getElementById("random-knight-button");
+  let randomEnd = document.getElementById("random-end-button");
+  let startButton = document.getElementById("start-button");
+  let resetButton = document.getElementById("reset-button");
+  let buttons = [randomKnight, randomEnd, startButton, resetButton];
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", removePlacementEventListeners);
+  })
 };
 
 const addPlaceEndButtonEventListeners = () => {

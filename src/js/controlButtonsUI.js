@@ -104,6 +104,36 @@ const addRandomKnightButtonEventListeners = () => {
   });
 };
 
+const addRandomEndButtonEventListeners = () => {
+  let randomEnd = document.getElementById("random-end-button");
+  
+  randomEnd.addEventListener("click", (event) => {
+    let chessBoard = document.getElementById("chess-board");
+    let tiles = chessBoard.childNodes;
+
+    tiles.forEach((child) => {
+      child.classList.remove("end-tile");
+    });
+
+    let x = getRandomInt(CHESS_BOARD_SIZE);
+    let y = getRandomInt(CHESS_BOARD_SIZE);
+    let tile = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    tile.classList.add("end-tile");
+
+    let startButton = document.getElementById("start-button");
+    startButton.dataset.endX = x;
+    startButton.dataset.endY = y;  
+  });
+}
+
+const addControlButtonsEventListeners = () => {
+  addPlaceKnightButtonEventListeners();
+  addPlaceEndButtonEventListeners();
+  addStartButtonEventListeners();
+  addRandomKnightButtonEventListeners();
+  addRandomEndButtonEventListeners();
+}
+
 const createControlButtonsUI = () => {
   let container = document.createElement("div");
   container.setAttribute("id", "control-buttons-container");
@@ -151,8 +181,5 @@ const createControlButtonsUI = () => {
 
 export {
   createControlButtonsUI,
-  addPlaceKnightButtonEventListeners,
-  addPlaceEndButtonEventListeners,
-  addStartButtonEventListeners,
-  addRandomKnightButtonEventListeners,
+  addControlButtonsEventListeners
 };

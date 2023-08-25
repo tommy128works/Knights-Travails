@@ -1,7 +1,7 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
-$chess-board-size: 50vw;
+$chess-board-size: 30vw;
 
 body {
   margin: 0;
@@ -9,6 +9,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
@@ -66,6 +68,7 @@ footer {
 
   div {
     text-align: center;
+    font-size: 2rem;
   }
 }
 

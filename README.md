@@ -2,7 +2,7 @@
 
 ![Screenshot of the App Overview](/src/assets/screenshots/Knights_Travails_Showcase.png)
 
-[View DEMO Here!]()
+[View DEMO Here!](https://tommy128works.github.io/Knights-Travails/)
 
 > [!NOTE]
 > This project is best viewed on a desktop. It is not suited for mobile view.
@@ -41,7 +41,7 @@ npm install
 npm start
 ```
 
-Otherwise, please check out the [DEMO!](https://tommy128works.github.io/Weather-App/)
+Otherwise, please check out the [DEMO!](https://tommy128works.github.io/Knights-Travails/)
 
 ## How to Use the Project
 
